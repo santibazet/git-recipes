@@ -2,6 +2,7 @@ import { Recipe } from "../domain/recipe.ts";
 import { RecipeList } from "../domain/recipelist.ts";
 
 const btnAdd = document.getElementById("btn-add") as HTMLButtonElement | null;
+const inpDesc = document.getElementById("inp-desc") as HTMLTextAreaElement | null;
 const inpName = document.getElementById(
   "inp-name",
 ) as HTMLInputElement | null;
@@ -18,6 +19,7 @@ if (btnAdd && inpName && inpCategory) {
     try {
       const newRecipe = new Recipe(inpName.value);
       newRecipe.category = inpCategory.value;
+      newRecipe._description = inpDesc?.value;
       mainRecipeList.add(newRecipe);
       clearInputs(inpName, inpCategory);
       recipesErrorContainer?.classList.add("d-none");
